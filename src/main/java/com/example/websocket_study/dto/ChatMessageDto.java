@@ -1,12 +1,12 @@
 package com.example.websocket_study.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
-@Builder
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ChatMessageDto {
     private Long roomId;         // 채팅방 ID
     private Long senderId;       // 보낸 멤버의 ID

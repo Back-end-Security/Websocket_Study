@@ -4,7 +4,6 @@ package com.example.websocket_study.controller;
 import com.example.websocket_study.dto.ChatMessageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,9 +24,7 @@ public class ChatController {
     // 클라이언트가 메시지 보낼 endpoint → /pub/chat/message
     @MessageMapping("/chat/message")
     public void sendMessage(ChatMessageDto message) {
-        template.convertAndSend("/sub/chat/room/" + message.getRoomId());
+        System.out.println("메시지 수신됨: " + message.getContent());
+        template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
-
-
-
 }
